@@ -34,7 +34,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- MDS Ecosystem versions -->
-    <mds.version>0.0.1-SNAPSHOT</mds.version>
+    <mds.version>0.1.6-SNAPSHOT</mds.version>
     <mds-platform.version>1.0.0-SNAPSHOT</mds-platform.version>
 
     <!-- Spring Cloud -->
@@ -117,6 +117,12 @@
 
       <dependency>
         <groupId>com.mds</groupId>
+        <artifactId>spring-liquibase-pattern</artifactId>
+        <version>${mds.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.mds</groupId>
         <artifactId>spring-cache-pattern</artifactId>
         <version>${mds.version}</version>
       </dependency>
@@ -179,6 +185,22 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <!-- ====================================================================== -->
+  <!-- Distribution — MDS Reposilite artifact repositories.                  -->
+  <!-- Resolved from MDS_REPOSILITE_URL at build time; server credentials    -->
+  <!-- come from settings.xml (mds-reposilite-releases / -snapshots ids).    -->
+  <!-- ====================================================================== -->
+  <distributionManagement>
+    <repository>
+      <id>mds-reposilite-releases</id>
+      <url>${env.MDS_REPOSILITE_URL}/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>mds-reposilite-snapshots</id>
+      <url>${env.MDS_REPOSILITE_URL}/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <!-- ====================================================================== -->
   <!-- Build — plugin management inherited by all child modules               -->
